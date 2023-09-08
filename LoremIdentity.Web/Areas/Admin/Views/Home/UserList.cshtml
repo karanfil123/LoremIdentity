@@ -1,0 +1,37 @@
+﻿@using System.Security.Claims;
+@{
+    ViewData["Title"] = "UserList";
+}
+@model List<AdminModel.UserViewModel>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Şehir</th>
+            <th>Roller</th>@if (User.HasClaim(x => x.Type == ClaimTypes.Role && x.Value == "admin"))
+            {
+                <th>Role İşlemleri</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.Id</td>
+                <td> @item.Name</td>
+                <td> @item.Email</td>
+                <td> @item.City</td>
+                <td> <user-role-names user-id="@item.Id"></user-role-names> </td>
+                @if (User.HasClaim(x => x.Type == ClaimTypes.Role && x.Value == "admin"))
+                {
+                    <td> <a asp-controller="Role" class="btn btn-outline-primary" asp-action="RoleToUserAssing" asp-route-id="@item.Id">Rol Ata</a></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+

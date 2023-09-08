@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model UserViewModel
+<style>
+
+    .user-profile {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .user-picture img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .user-details {
+        margin-left: 20px;
+    }
+
+        .user-details h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .user-details p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+</style>
+
+<div class="user-profile">
+  
+    <div class="user-picture">
+      <user-picture pictureu-url="@Model.PictureUrl"></user-picture>
+    </div>
+    <div class="user-details">
+        <h1>@Model.Username</h1>
+        <p>E-Posta : @Model.Email</p>
+        <p>Telefon : @Model.PhoneNumber</p>
+    </div>
+</div>
+
+

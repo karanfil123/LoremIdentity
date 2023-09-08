@@ -1,0 +1,43 @@
+﻿@model List<AdminModel.RoleListViewModel>
+@{
+    ViewData["Title"] = "Tüm Roller";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Tüm Roller</h3>
+            </div>
+            <div class="col-md-6">
+                <h3><a class="btn btn-success" asp-area="Admin" asp-controller="Role" asp-action="RoleAdd">Rol Ekle</a></h3>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>İşşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td> @item.Id</td>
+                        <td> @item.Name</td>
+                        <td>
+                            <a class="btn btn-primary my-2" asp-area="Admin" asp-controller="Role" asp-action="RoleUpdate" asp-route-id="@item.Id">Güncelle</a>
+                            <a class="btn btn-danger" asp-area="Admin" asp-controller="Role" asp-action="RoleDelete" asp-route-id="@item.Id">Sil</a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
